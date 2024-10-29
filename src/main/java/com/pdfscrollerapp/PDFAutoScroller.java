@@ -1,9 +1,12 @@
 package com.pdfscrollerapp;
 
-import javax.swing.*;
 import java.io.File;
 
+import javax.swing.*;
+
 public class PDFAutoScroller extends JFrame {
+  private PDFViewer pdfViewer;
+  private AutoScroller autoScroller;
 
   public PDFAutoScroller() {
     setTitle("PDF Auto Scroller");
@@ -12,7 +15,13 @@ public class PDFAutoScroller extends JFrame {
 
     String filePath = selectPDFFile();
     if (filePath != null) {
-      System.out.println("PDF selected: " + filePath);
+      pdfViewer = new PDFViewer();
+      pdfViewer.loadPDF(filePath);
+
+      add(pdfViewer.getScrollPane());
+
+      autoScroller = new AutoScroller(pdfViewer.getScrollPane());
+      autoScroller.startScrolling();
     } else {
       System.out.println("No file selected.");
     }

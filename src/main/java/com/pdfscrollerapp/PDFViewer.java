@@ -4,14 +4,12 @@ import javax.swing.*;
 
 public class PDFViewer {
   private JScrollPane scrollPane;
-  private JTextArea pdfArea;
+  private JLabel pdfLabel;
 
   public PDFViewer() {
-    pdfArea = new JTextArea();
-    scrollPane = new JScrollPane(pdfArea);
+    pdfLabel = new JLabel();
+    scrollPane = new JScrollPane(pdfLabel);
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-    loadPDF("path/to/sample.pdf");
   }
 
   public JScrollPane getScrollPane() {
@@ -20,7 +18,11 @@ public class PDFViewer {
 
   public void loadPDF(String filePath) {
     PDFLoader loader = new PDFLoader();
-    String pdfContent = loader.loadPDF(filePath);
-    pdfArea.setText(pdfContent);
+    ImageIcon pdfImage = loader.loadPDF(filePath);
+    if (pdfImage != null) {
+      pdfLabel.setIcon(pdfImage);
+    } else {
+      pdfLabel.setText("Failed to load PDF.");
+    }
   }
 }
