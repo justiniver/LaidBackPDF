@@ -2,6 +2,9 @@ package com.pdfscrollerapp;
 
 import javax.swing.*;
 
+/**
+ * Autoscroller logic class.
+ */
 public class AutoScroller {
   private JScrollPane scrollPane;
   private Timer timer;
