@@ -2,6 +2,10 @@ package com.pdfscrollerapp;
 
 import javax.swing.*;
 
+/**
+ * The view for the PDF.
+ * The PDF will always be viewed vertically.
+ */
 public class PDFViewer {
   private JScrollPane scrollPane;
   private JLabel pdfLabel;
