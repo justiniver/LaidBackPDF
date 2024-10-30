@@ -4,6 +4,9 @@ import java.io.File;
 
 import javax.swing.*;
 
+/**
+ * Entry point to run the autoscroller.
+ */
 public class PDFAutoScroller extends JFrame {
   private PDFViewer pdfViewer;
   private AutoScroller autoScroller;
