@@ -9,6 +9,9 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+/**
+ * Loads and renders the given PDF.
+ */
 public class PDFLoader {
 
   public ImageIcon loadPDF(String filePath) {
