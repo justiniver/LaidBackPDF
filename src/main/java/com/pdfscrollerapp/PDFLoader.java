@@ -6,26 +6,33 @@ import org.apache.pdfbox.rendering.PDFRenderer;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
 /**
- * Loads and renders the given PDF.
+ * Loads and renders all pages of a given PDF.
  */
 public class PDFLoader {
 
-  public ImageIcon loadPDF(String filePath) {
+  public List<ImageIcon> loadPDF(String filePath) {
+    List<ImageIcon> images = new ArrayList<>();
+
     try {
       PDDocument document = PDDocument.load(new File(filePath));
       PDFRenderer pdfRenderer = new PDFRenderer(document);
 
-      BufferedImage image = pdfRenderer.renderImageWithDPI(0, 150);
-      document.close();
+      for (int i = 0; i < document.getNumberOfPages(); i++) {
+        BufferedImage image = pdfRenderer.renderImageWithDPI(i, 150);
+        images.add(new ImageIcon(image));
+      }
 
-      return new ImageIcon(image);
+      document.close();
     } catch (IOException e) {
       e.printStackTrace();
-      return null;
     }
+
+    return images;
   }
 }

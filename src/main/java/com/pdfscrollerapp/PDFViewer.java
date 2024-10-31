@@ -1,18 +1,21 @@
 package com.pdfscrollerapp;
 
+import java.util.List;
+
 import javax.swing.*;
 
 /**
- * The view for the PDF.
- * The PDF will always be viewed vertically.
+ * The view for displaying all pages of the PDF.
+ * The PDF will be viewed vertically, with each page displayed in order.
  */
 public class PDFViewer {
   private JScrollPane scrollPane;
-  private JLabel pdfLabel;
+  private JPanel pdfPanel;
 
   public PDFViewer() {
-    pdfLabel = new JLabel();
-    scrollPane = new JScrollPane(pdfLabel);
+    pdfPanel = new JPanel();
+    pdfPanel.setLayout(new BoxLayout(pdfPanel, BoxLayout.Y_AXIS));
+    scrollPane = new JScrollPane(pdfPanel);
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
   }
 
@@ -22,11 +25,19 @@ public class PDFViewer {
 
   public void loadPDF(String filePath) {
     PDFLoader loader = new PDFLoader();
-    ImageIcon pdfImage = loader.loadPDF(filePath);
-    if (pdfImage != null) {
-      pdfLabel.setIcon(pdfImage);
+    List<ImageIcon> pdfImages = loader.loadPDF(filePath);
+
+    if (pdfImages.isEmpty()) {
+      JLabel errorLabel = new JLabel("Failed to load PDF.");
+      pdfPanel.add(errorLabel);
     } else {
-      pdfLabel.setText("Failed to load PDF.");
+      for (ImageIcon image : pdfImages) {
+        JLabel pageLabel = new JLabel(image);
+        pdfPanel.add(pageLabel);
+      }
     }
+
+    pdfPanel.revalidate();
+    pdfPanel.repaint();
   }
 }
