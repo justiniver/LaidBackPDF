@@ -1,5 +1,6 @@
 package com.pdfscrollerapp;
 
+import java.awt.*;
 import java.util.List;
 
 import javax.swing.*;
@@ -14,7 +15,12 @@ public class PDFViewer {
 
   public PDFViewer() {
     pdfPanel = new JPanel();
-    pdfPanel.setLayout(new BoxLayout(pdfPanel, BoxLayout.Y_AXIS));
+    pdfPanel.setLayout(new GridBagLayout());
+
+    JPanel pagesPanel = new JPanel();
+    pagesPanel.setLayout(new BoxLayout(pagesPanel, BoxLayout.Y_AXIS));
+    pdfPanel.add(pagesPanel, new GridBagConstraints());
+
     scrollPane = new JScrollPane(pdfPanel);
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
   }
@@ -31,9 +37,11 @@ public class PDFViewer {
       JLabel errorLabel = new JLabel("Failed to load PDF.");
       pdfPanel.add(errorLabel);
     } else {
+      JPanel pagesPanel = (JPanel) ((JPanel) scrollPane.getViewport().getView()).getComponent(0);
       for (ImageIcon image : pdfImages) {
         JLabel pageLabel = new JLabel(image);
-        pdfPanel.add(pageLabel);
+        pageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        pagesPanel.add(pageLabel);
       }
     }
 

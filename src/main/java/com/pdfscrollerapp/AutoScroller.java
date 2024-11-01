@@ -14,13 +14,13 @@ public class AutoScroller {
   }
 
   public void startScrolling() {
-    timer = new Timer(100, e -> {
+    timer = new Timer(0, e -> {
       JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
       int currentValue = verticalBar.getValue();
       int maxValue = verticalBar.getMaximum();
 
-      if (currentValue + 1 < maxValue) {
-        verticalBar.setValue(currentValue + 1);
+      if (currentValue + 3 < maxValue) {
+        verticalBar.setValue(currentValue + 3);
       }
     });
     timer.start();
