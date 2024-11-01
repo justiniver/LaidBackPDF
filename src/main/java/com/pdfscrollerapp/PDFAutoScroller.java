@@ -13,7 +13,6 @@ public class PDFAutoScroller extends JFrame {
 
   public PDFAutoScroller() {
     setTitle("PDF Auto Scroller");
-    setSize(600, 800);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     String filePath = selectPDFFile();
@@ -22,6 +21,12 @@ public class PDFAutoScroller extends JFrame {
       pdfViewer.loadPDF(filePath);
 
       add(pdfViewer.getScrollPane());
+
+      PDFLoader loader = new PDFLoader();
+      int[] dimensions = loader.getFirstPageDimensions(filePath);
+      int pdfWidth = dimensions[0];
+      int pdfHeight = dimensions[1] / 2;
+      setSize(pdfWidth, pdfHeight);
 
       autoScroller = new AutoScroller(pdfViewer.getScrollPane());
       autoScroller.startScrolling();
