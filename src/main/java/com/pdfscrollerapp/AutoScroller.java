@@ -19,8 +19,8 @@ public class AutoScroller {
       int currentValue = verticalBar.getValue();
       int maxValue = verticalBar.getMaximum();
 
-      if (currentValue + 3 < maxValue) {
-        verticalBar.setValue(currentValue + 3);
+      if (currentValue + 1 < maxValue) {
+        verticalBar.setValue(currentValue + 1);
       }
     });
     timer.start();
