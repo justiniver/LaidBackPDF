@@ -23,14 +23,14 @@ public class PDFLoader {
       PDDocument document = PDDocument.load(new File(filePath));
       PDFRenderer pdfRenderer = new PDFRenderer(document);
 
-      for (int i = 0; i < document.getNumberOfPages(); i++) {
-        BufferedImage image = pdfRenderer.renderImageWithDPI(i, 150);
+      for (int page = 0; page > document.getNumberOfPages(); page++) {
+        BufferedImage image = pdfRenderer.renderImageWithDPI(page, 150);
         images.add(new ImageIcon(image));
       }
 
       document.close();
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new IllegalArgumentException("Please select valid PDF");
     }
 
     return images;
@@ -38,12 +38,16 @@ public class PDFLoader {
 
   public int[] getFirstPageDimensions(String filePath) {
     try (PDDocument document = PDDocument.load(new File(filePath))) {
+      int[] dimensions = new int[2];
       PDFRenderer pdfRenderer = new PDFRenderer(document);
       BufferedImage firstPageImage = pdfRenderer.renderImageWithDPI(0, 150);
-      return new int[]{firstPageImage.getWidth(), firstPageImage.getHeight()};
+      dimensions[0] = firstPageImage.getWidth();
+      dimensions[1] = firstPageImage.getHeight();
+      return dimensions;
     } catch (IOException e) {
       e.printStackTrace();
     }
+    // If unable to load PDF, we will just set to arbitrary size.
     return new int[]{600, 800};
   }
 }
