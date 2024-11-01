@@ -14,7 +14,7 @@ public class AutoScroller {
   }
 
   public void startScrolling() {
-    timer = new Timer(0, e -> {
+    timer = new Timer(10, e -> {
       JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
       int currentValue = verticalBar.getValue();
       int maxValue = verticalBar.getMaximum();
