@@ -40,7 +40,7 @@ public class PDFLoader {
     try (PDDocument document = PDDocument.load(new File(filePath))) {
       PDFRenderer pdfRenderer = new PDFRenderer(document);
       BufferedImage firstPageImage = pdfRenderer.renderImageWithDPI(0, 150);
-      return new int[]{firstPageImage.getWidth(), firstPageImage.getHeight() / 2};
+      return new int[]{firstPageImage.getWidth(), firstPageImage.getHeight()};
     } catch (IOException e) {
       e.printStackTrace();
     }
