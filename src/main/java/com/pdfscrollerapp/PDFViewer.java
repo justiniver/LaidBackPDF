@@ -1,9 +1,16 @@
 package com.pdfscrollerapp;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Component;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 
 /**
  * The view for displaying all pages of the PDF.

@@ -2,7 +2,9 @@ package com.pdfscrollerapp;
 
 import java.io.File;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.JFileChooser;
 
 /**
  * Entry point to run the autoscroller.
