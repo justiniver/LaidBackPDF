@@ -7,7 +7,7 @@ import javax.swing.JScrollBar;
 /**
  * Autoscroller logic class.
  */
-public class AutoScroller {
+public class AutoScroller implements Scroller {
   private JScrollPane scrollPane;
   private Timer timer;
 
@@ -15,6 +15,7 @@ public class AutoScroller {
     this.scrollPane = scrollPane;
   }
 
+  @Override
   public void startScrolling() {
     timer = new Timer(10, e -> {
       JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
@@ -28,6 +29,7 @@ public class AutoScroller {
     timer.start();
   }
 
+  @Override
   public void stopScrolling() {
     if (timer != null) {
       timer.stop();

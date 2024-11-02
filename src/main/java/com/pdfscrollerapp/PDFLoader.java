@@ -22,8 +22,9 @@ public class PDFLoader {
     try {
       PDDocument document = PDDocument.load(new File(filePath));
       PDFRenderer pdfRenderer = new PDFRenderer(document);
+      int numPagesInDocument = document.getNumberOfPages();
 
-      for (int page = 0; page > document.getNumberOfPages(); page++) {
+      for (int page = 0; page < numPagesInDocument; page++) {
         BufferedImage image = pdfRenderer.renderImageWithDPI(page, 150);
         images.add(new ImageIcon(image));
       }

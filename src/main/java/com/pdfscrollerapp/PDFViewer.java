@@ -41,8 +41,7 @@ public class PDFViewer {
     List<ImageIcon> pdfImages = loader.loadPDF(filePath);
 
     if (pdfImages.isEmpty()) {
-      JLabel errorLabel = new JLabel("Failed to load PDF.");
-      pdfPanel.add(errorLabel);
+      throw new IllegalStateException("Failed to load PDF.");
     } else {
       JPanel pagesPanel = (JPanel) ((JPanel) scrollPane.getViewport().getView()).getComponent(0);
       for (ImageIcon image : pdfImages) {
