@@ -31,8 +31,9 @@ public class AutoScroller implements Scroller {
 
   @Override
   public void stopScrolling() {
-    if (timer != null) {
-      timer.stop();
+    if (timer == null) {
+      throw new IllegalStateException("Timer cannot be null");
     }
+    timer.stop();
   }
 }

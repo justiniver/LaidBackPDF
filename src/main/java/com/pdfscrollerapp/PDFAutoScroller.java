@@ -18,23 +18,24 @@ public class PDFAutoScroller extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     String filePath = selectPDFFile();
-    if (filePath != null) {
-      pdfViewer = new PDFViewer();
-      pdfViewer.loadPDF(filePath);
 
-      add(pdfViewer.getScrollPane());
-
-      PDFLoader loader = new PDFLoader();
-      int[] dimensions = loader.getFirstPageDimensions(filePath);
-      int pdfWidth = dimensions[0];
-      int pdfHeight = dimensions[1] / 2;
-      setSize(pdfWidth, pdfHeight);
-
-      autoScroller = new AutoScroller(pdfViewer.getScrollPane());
-      autoScroller.startScrolling();
-    } else {
-      System.out.println("No file selected.");
+    if (filePath == null) {
+      throw new IllegalStateException("File path cannot be null");
     }
+
+    pdfViewer = new PDFViewer();
+    pdfViewer.loadPDF(filePath);
+
+    add(pdfViewer.getScrollPane());
+
+    PDFLoader loader = new PDFLoader();
+    int[] dimensions = loader.getFirstPageDimensions(filePath);
+    int pdfWidth = dimensions[0];
+    int pdfHeight = dimensions[1] / 2;
+    setSize(pdfWidth, pdfHeight);
+
+    autoScroller = new AutoScroller(pdfViewer.getScrollPane());
+    autoScroller.startScrolling();
   }
 
   private String selectPDFFile() {

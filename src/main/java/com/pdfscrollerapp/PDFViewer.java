@@ -42,13 +42,13 @@ public class PDFViewer {
 
     if (pdfImages.isEmpty()) {
       throw new IllegalStateException("Failed to load PDF.");
-    } else {
-      JPanel pagesPanel = (JPanel) ((JPanel) scrollPane.getViewport().getView()).getComponent(0);
-      for (ImageIcon image : pdfImages) {
+    }
+
+    JPanel pagesPanel = (JPanel) ((JPanel) scrollPane.getViewport().getView()).getComponent(0);
+    for (ImageIcon image : pdfImages) {
         JLabel pageLabel = new JLabel(image);
         pageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         pagesPanel.add(pageLabel);
-      }
     }
 
     pdfPanel.revalidate();
