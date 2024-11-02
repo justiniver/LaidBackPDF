@@ -45,9 +45,7 @@ public class PDFLoader {
       dimensions[1] = firstPageImage.getHeight();
       return dimensions;
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new IllegalArgumentException("Please select valid PDF");
     }
-    // If unable to load PDF, we will just set to arbitrary size.
-    return new int[]{600, 800};
   }
 }
