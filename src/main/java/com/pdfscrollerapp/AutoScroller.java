@@ -8,7 +8,7 @@ import javax.swing.JScrollBar;
  * Autoscroller logic class.
  */
 public class AutoScroller implements Scroller {
-  private JScrollPane scrollPane;
+  private final JScrollPane scrollPane;
   private Timer timer;
 
   public AutoScroller(JScrollPane scrollPane) {

@@ -1,17 +1,13 @@
 package com.pdfscrollerapp;
 
 import java.io.File;
-
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.JFileChooser;
 
 /**
- * Entry point to run the autoscroller.
+ * GUI setup for the PDF Auto Scroller.
  */
 public class PDFAutoScroller extends JFrame {
-  private PDFViewer pdfViewer;
-  private AutoScroller autoScroller;
 
   public PDFAutoScroller() {
     setTitle("PDF Auto Scroller");
@@ -23,7 +19,7 @@ public class PDFAutoScroller extends JFrame {
       throw new IllegalStateException("File path cannot be null");
     }
 
-    pdfViewer = new PDFViewer();
+    PDFViewer pdfViewer = new PDFViewer();
     pdfViewer.loadPDF(filePath);
 
     add(pdfViewer.getScrollPane());
@@ -34,7 +30,7 @@ public class PDFAutoScroller extends JFrame {
     int pdfHeight = dimensions[1] / 2;
     setSize(pdfWidth, pdfHeight);
 
-    autoScroller = new AutoScroller(pdfViewer.getScrollPane());
+    AutoScroller autoScroller = new AutoScroller(pdfViewer.getScrollPane());
     autoScroller.startScrolling();
   }
 
@@ -50,12 +46,5 @@ public class PDFAutoScroller extends JFrame {
     } else {
       return null;
     }
-  }
-
-  public static void main(String[] args) {
-    SwingUtilities.invokeLater(() -> {
-      PDFAutoScroller scroller = new PDFAutoScroller();
-      scroller.setVisible(true);
-    });
   }
 }

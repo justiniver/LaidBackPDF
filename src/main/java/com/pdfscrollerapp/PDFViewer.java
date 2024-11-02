@@ -17,8 +17,8 @@ import javax.swing.JLabel;
  * The PDF will be viewed vertically, with each page displayed in order.
  */
 public class PDFViewer {
-  private JScrollPane scrollPane;
-  private JPanel pdfPanel;
+  private final JScrollPane scrollPane;
+  private final JPanel pdfPanel;
 
   public PDFViewer() {
     pdfPanel = new JPanel();
