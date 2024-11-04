@@ -13,8 +13,7 @@ import javax.swing.JLabel;
 
 
 /**
- * The view for displaying all pages of the PDF.
- * The PDF will be viewed vertically, with each page displayed in order.
+ * The view for vertically displaying all pages of the PDF.
  */
 public class PDFViewer {
   private final JScrollPane scrollPane;
