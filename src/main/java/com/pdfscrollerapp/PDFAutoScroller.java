@@ -1,8 +1,9 @@
 package com.pdfscrollerapp;
 
+import java.awt.*;
 import java.io.File;
-import javax.swing.JFrame;
-import javax.swing.JFileChooser;
+
+import javax.swing.*;
 
 /**
  * Sets up and manages the GUI for the PDF Auto Scroller application.
@@ -11,6 +12,9 @@ import javax.swing.JFileChooser;
  * Uses {@link PDFViewer} to display the PDF and {@link AutoScroller} to enable automatic scrolling.
  */
 public class PDFAutoScroller extends JFrame {
+
+  private AutoScroller autoScroller;
+  private boolean isCurrentlyScrolling = false;
 
   /**
    * Constructs the PDF Auto Scroller GUI.
@@ -23,6 +27,7 @@ public class PDFAutoScroller extends JFrame {
   public PDFAutoScroller() {
     setTitle("PDF Auto Scroller");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLayout(new BorderLayout());
 
     String filePath = selectPDFFile();
 
@@ -32,17 +37,31 @@ public class PDFAutoScroller extends JFrame {
 
     PDFViewer pdfViewer = new PDFViewer();
     pdfViewer.loadPDF(filePath);
+    add(pdfViewer.getScrollPane(), BorderLayout.CENTER);
 
-    add(pdfViewer.getScrollPane());
+    autoScroller = new AutoScroller(pdfViewer.getScrollPane());
+
+    JButton scrollButton = new JButton("Start Scrolling");
+    scrollButton.addActionListener(e -> {
+      if (isCurrentlyScrolling) {
+        autoScroller.stopScrolling();
+        scrollButton.setText("Start Scrolling");
+      } else {
+        autoScroller.startScrolling();
+        scrollButton.setText("Stop Scrolling");
+      }
+      isCurrentlyScrolling = !isCurrentlyScrolling;
+    });
+
+    JPanel buttonPanel = new JPanel();
+    buttonPanel.add(scrollButton);
+    add(buttonPanel, BorderLayout.SOUTH);
 
     PDFLoader loader = new PDFLoader();
     int[] dimensions = loader.getFirstPageDimensions(filePath);
     int pdfWidth = dimensions[0];
     int pdfHeight = dimensions[1] / 2;
     setSize(pdfWidth, pdfHeight);
-
-    AutoScroller autoScroller = new AutoScroller(pdfViewer.getScrollPane());
-    autoScroller.startScrolling();
   }
 
   /**
