@@ -20,7 +20,7 @@ public class PDFViewer {
   private final JPanel pdfPanel;
 
   /**
-   * Constructs a new PDFViewer with a vertically scrollable panel.
+   * Constructs a new {@link PDFViewer} with a vertically scrollable panel.
    */
   public PDFViewer() {
     pdfPanel = new JPanel();

@@ -17,9 +17,6 @@ public class AutoScroller implements Scroller {
     this.scrollPane = scrollPane;
   }
 
-  /**
-   * Starts the automatic scrolling action.
-   */
   @Override
   public void startScrolling() {
     timer = new Timer(10, e -> {
@@ -34,11 +31,6 @@ public class AutoScroller implements Scroller {
     timer.start();
   }
 
-  /**
-   * Stops the automatic scrolling action.
-   *
-   * @throws IllegalStateException if the timer has not been initialized
-   */
   @Override
   public void stopScrolling() {
     if (timer == null) {
