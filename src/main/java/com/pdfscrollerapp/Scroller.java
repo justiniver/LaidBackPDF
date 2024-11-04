@@ -11,7 +11,9 @@ public interface Scroller {
   void startScrolling();
 
   /**
-   * Stops the automatic scrolling behavior.
+   * Stops the automatic scrolling action.
+   *
+   * @throws IllegalStateException if the timer has not been initialized
    */
   void stopScrolling();
 }

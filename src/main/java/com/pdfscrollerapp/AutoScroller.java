@@ -5,7 +5,9 @@ import javax.swing.Timer;
 import javax.swing.JScrollBar;
 
 /**
- * Autoscroller logic class.
+ * Handles automatic scrolling for a {@link JScrollPane}.
+ * This class manages an auto-scrolling feature. It provides methods to start and stop the
+ * scrolling action, with adjustable speed based on the timer delay.
  */
 public class AutoScroller implements Scroller {
   private final JScrollPane scrollPane;

@@ -13,13 +13,15 @@ import javax.swing.JLabel;
 
 
 /**
- * The view for displaying all pages of the PDF.
- * The PDF will be viewed vertically, with each page displayed in order.
+ * Displays a PDF document by rendering each page as an image in a vertically scrollable view.
  */
 public class PDFViewer {
   private final JScrollPane scrollPane;
   private final JPanel pdfPanel;
 
+  /**
+   * Constructs a new {@link PDFViewer} with a vertically scrollable panel.
+   */
   public PDFViewer() {
     pdfPanel = new JPanel();
     pdfPanel.setLayout(new GridBagLayout());
@@ -32,10 +34,22 @@ public class PDFViewer {
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
   }
 
+  /**
+   * Returns the {@link JScrollPane} containing the PDF content.
+   *
+   * @return the scroll pane containing the vertically arranged PDF pages
+   */
   public JScrollPane getScrollPane() {
     return scrollPane;
   }
 
+  /**
+   * Loads and displays the pages of the PDF from the specified file path.
+   * This method uses a {@link PDFLoader} to load each page of the PDF as an {@link ImageIcon}.
+   *
+   * @param filePath the path to the PDF file to be loaded
+   * @throws IllegalStateException if the PDF fails to load or contains no pages
+   */
   public void loadPDF(String filePath) {
     PDFLoader loader = new PDFLoader();
     List<ImageIcon> pdfImages = loader.loadPDF(filePath);

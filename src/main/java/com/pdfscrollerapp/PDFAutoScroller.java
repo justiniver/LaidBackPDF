@@ -5,10 +5,21 @@ import javax.swing.JFrame;
 import javax.swing.JFileChooser;
 
 /**
- * GUI setup for the PDF Auto Scroller.
+ * Sets up and manages the GUI for the PDF Auto Scroller application.
+ * This class initializes the main application window and handles PDF file selection,
+ * configures the PDF viewing panel, and starts automatic scrolling through the PDF content.
+ * Uses {@link PDFViewer} to display the PDF and {@link AutoScroller} to enable automatic scrolling.
  */
 public class PDFAutoScroller extends JFrame {
 
+  /**
+   * Constructs the PDF Auto Scroller GUI.
+   * Initializes the main frame, prompts the user to select a PDF file, and displays the
+   * content in a scrollable view. It dynamically sets the frame size based on the PDFs
+   * dimensions, and starts automatic scrolling.
+   *
+   * @throws IllegalStateException if no file is selected or if the selected file path is null
+   */
   public PDFAutoScroller() {
     setTitle("PDF Auto Scroller");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,6 +45,13 @@ public class PDFAutoScroller extends JFrame {
     autoScroller.startScrolling();
   }
 
+  /**
+   * Opens a file chooser dialog to allow the user to select a PDF file.
+   * Displays a file chooser and returns the path to the selected PDF file. If no file
+   * is selected or the dialog is canceled, it returns null.
+   *
+   * @return the absolute path to the selected PDF file, or null if no file is selected
+   */
   private String selectPDFFile() {
     JFileChooser fileChooser = new JFileChooser();
     fileChooser.setDialogTitle("Select a PDF file");
