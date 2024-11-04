@@ -12,13 +12,17 @@ import javax.swing.JScrollBar;
 public class AutoScroller implements Scroller {
   private final JScrollPane scrollPane;
   private Timer timer;
+  private ScrollState scrollState;
 
   public AutoScroller(JScrollPane scrollPane) {
     this.scrollPane = scrollPane;
+    this.scrollState = ScrollState.STOPPED;
   }
 
   @Override
   public void startScrolling() {
+    if (scrollState == ScrollState.RUNNING) return;
+
     timer = new Timer(10, e -> {
       JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
       int currentValue = verticalBar.getValue();
@@ -29,6 +33,7 @@ public class AutoScroller implements Scroller {
       }
     });
     timer.start();
+    scrollState = ScrollState.RUNNING;
   }
 
   @Override
@@ -37,5 +42,10 @@ public class AutoScroller implements Scroller {
       throw new IllegalStateException("Timer cannot be null");
     }
     timer.stop();
+    scrollState = ScrollState.STOPPED;
+  }
+
+  public ScrollState getScrollState() {
+    return scrollState;
   }
 }
