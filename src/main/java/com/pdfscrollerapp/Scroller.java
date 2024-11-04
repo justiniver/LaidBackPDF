@@ -16,4 +16,11 @@ public interface Scroller {
    * @throws IllegalStateException if the timer has not been initialized
    */
   void stopScrolling();
+
+  /**
+   * Returns the current scroll state.
+   *
+   * @return the current scroll state
+   */
+  ScrollState getScrollState();
 }
