@@ -41,6 +41,17 @@ public class PDFAutoScroller extends JFrame {
 
     autoScroller = new AutoScroller(pdfViewer.getScrollPane());
 
+    JPanel buttonPanel = getButtonPanel();
+    add(buttonPanel, BorderLayout.SOUTH);
+
+    PDFLoader loader = new PDFLoader();
+    int[] dimensions = loader.getFirstPageDimensions(filePath);
+    int pdfWidth = dimensions[0];
+    int pdfHeight = dimensions[1] / 2;
+    setSize(pdfWidth, pdfHeight);
+  }
+
+  private JPanel getButtonPanel() {
     JButton scrollButton = new JButton("Start Scrolling");
     scrollButton.addActionListener(e -> {
       if (isCurrentlyScrolling) {
@@ -53,15 +64,17 @@ public class PDFAutoScroller extends JFrame {
       isCurrentlyScrolling = !isCurrentlyScrolling;
     });
 
+    JButton increaseScrollSpeed = new JButton("Increase Scroll Speed");
+    scrollButton.addActionListener(e -> autoScroller.increaseScrollSpeed());
+
+    JButton decreaseScrollSpeed = new JButton("Decrease Scroll Speed");
+    scrollButton.addActionListener(e -> autoScroller.decreaseScrollSpeed());
+
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(scrollButton);
-    add(buttonPanel, BorderLayout.SOUTH);
-
-    PDFLoader loader = new PDFLoader();
-    int[] dimensions = loader.getFirstPageDimensions(filePath);
-    int pdfWidth = dimensions[0];
-    int pdfHeight = dimensions[1] / 2;
-    setSize(pdfWidth, pdfHeight);
+    buttonPanel.add(increaseScrollSpeed);
+    buttonPanel.add(decreaseScrollSpeed);
+    return buttonPanel;
   }
 
   /**

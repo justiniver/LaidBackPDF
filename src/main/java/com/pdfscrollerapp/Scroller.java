@@ -23,4 +23,14 @@ public interface Scroller {
    * @return the current scroll state
    */
   ScrollState getScrollState();
+
+  /**
+   * Increases scroll speed.
+   */
+  void increaseScrollSpeed();
+
+  /**
+   * Decreases scroll speed.
+   */
+  void decreaseScrollSpeed();
 }

@@ -13,17 +13,19 @@ public class AutoScroller implements Scroller {
   private final JScrollPane scrollPane;
   private Timer timer;
   private ScrollState scrollState;
+  private int scrollSpeed;
 
   public AutoScroller(JScrollPane scrollPane) {
     this.scrollPane = scrollPane;
     this.scrollState = ScrollState.STOPPED;
+    this.scrollSpeed = 10;
   }
 
   @Override
   public void startScrolling() {
     if (scrollState == ScrollState.RUNNING) return;
 
-    timer = new Timer(10, e -> {
+    timer = new Timer(scrollSpeed, e -> {
       JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
       int currentValue = verticalBar.getValue();
       int maxValue = verticalBar.getMaximum();
@@ -45,7 +47,17 @@ public class AutoScroller implements Scroller {
     scrollState = ScrollState.STOPPED;
   }
 
+  @Override
   public ScrollState getScrollState() {
     return scrollState;
   }
+
+  public void increaseScrollSpeed() {
+    scrollSpeed++;
+  }
+
+  public void decreaseScrollSpeed() {
+    scrollSpeed--;
+  }
+
 }
