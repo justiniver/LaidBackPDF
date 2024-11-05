@@ -53,29 +53,38 @@ public class PDFAutoScroller extends JFrame {
 
   private JPanel getButtonPanel() {
     JButton scrollButton = new JButton("Start Scrolling");
+    JButton increaseScrollSpeed = new JButton("Increase Scroll Speed");
+    JButton decreaseScrollSpeed = new JButton("Decrease Scroll Speed");
+
+    increaseScrollSpeed.setVisible(true);
+    decreaseScrollSpeed.setVisible(true);
+
     scrollButton.addActionListener(e -> {
       if (isCurrentlyScrolling) {
         autoScroller.stopScrolling();
         scrollButton.setText("Start Scrolling");
+        increaseScrollSpeed.setVisible(true);
+        decreaseScrollSpeed.setVisible(true);
       } else {
         autoScroller.startScrolling();
         scrollButton.setText("Stop Scrolling");
+        increaseScrollSpeed.setVisible(false);
+        decreaseScrollSpeed.setVisible(false);
       }
       isCurrentlyScrolling = !isCurrentlyScrolling;
     });
 
-    JButton increaseScrollSpeed = new JButton("Increase Scroll Speed");
-    scrollButton.addActionListener(e -> autoScroller.increaseScrollSpeed());
-
-    JButton decreaseScrollSpeed = new JButton("Decrease Scroll Speed");
-    scrollButton.addActionListener(e -> autoScroller.decreaseScrollSpeed());
+    increaseScrollSpeed.addActionListener(e -> autoScroller.increaseScrollSpeed());
+    decreaseScrollSpeed.addActionListener(e -> autoScroller.decreaseScrollSpeed());
 
     JPanel buttonPanel = new JPanel();
-    buttonPanel.add(scrollButton);
     buttonPanel.add(increaseScrollSpeed);
+    buttonPanel.add(scrollButton);
     buttonPanel.add(decreaseScrollSpeed);
+
     return buttonPanel;
   }
+
 
   /**
    * Opens a file chooser dialog to allow the user to select a PDF file.

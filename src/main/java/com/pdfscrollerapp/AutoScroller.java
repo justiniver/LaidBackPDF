@@ -23,8 +23,51 @@ public class AutoScroller implements Scroller {
 
   @Override
   public void startScrolling() {
-    if (scrollState == ScrollState.RUNNING) return;
+    if (scrollState == ScrollState.RUNNING) {
+      return;
+    }
 
+    createAndStartTimer();
+    scrollState = ScrollState.RUNNING;
+  }
+
+  @Override
+  public void stopScrolling() {
+    if (timer != null) {
+      timer.stop();
+      scrollState = ScrollState.STOPPED;
+    } else {
+      throw new IllegalStateException("Timer cannot be null");
+    }
+  }
+
+  @Override
+  public ScrollState getScrollState() {
+    return scrollState;
+  }
+
+  @Override
+  public void increaseScrollSpeed() {
+    scrollSpeed = Math.max(1, scrollSpeed - 1);
+    if (scrollState == ScrollState.RUNNING) {
+      resetTimer();
+    }
+  }
+
+  @Override
+  public void decreaseScrollSpeed() {
+    scrollSpeed++;
+    if (scrollState == ScrollState.RUNNING) {
+      resetTimer();
+    }
+  }
+
+  private void resetTimer() {
+    stopScrolling();
+    createAndStartTimer();
+  }
+
+  private void createAndStartTimer() {
     timer = new Timer(scrollSpeed, e -> {
       JScrollBar verticalBar = scrollPane.getVerticalScrollBar();
       int currentValue = verticalBar.getValue();
@@ -35,29 +78,5 @@ public class AutoScroller implements Scroller {
       }
     });
     timer.start();
-    scrollState = ScrollState.RUNNING;
   }
-
-  @Override
-  public void stopScrolling() {
-    if (timer == null) {
-      throw new IllegalStateException("Timer cannot be null");
-    }
-    timer.stop();
-    scrollState = ScrollState.STOPPED;
-  }
-
-  @Override
-  public ScrollState getScrollState() {
-    return scrollState;
-  }
-
-  public void increaseScrollSpeed() {
-    scrollSpeed++;
-  }
-
-  public void decreaseScrollSpeed() {
-    scrollSpeed--;
-  }
-
 }
