@@ -1,4 +1,4 @@
-package com.pdfscrollerapp;
+package com.laidbackpdfapp;
 
 import javax.swing.JScrollPane;
 import javax.swing.Timer;

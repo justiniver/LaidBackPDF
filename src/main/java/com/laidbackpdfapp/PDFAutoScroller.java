@@ -1,4 +1,4 @@
-package com.pdfscrollerapp;
+package com.laidbackpdfapp;
 
 import java.awt.*;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.pdfscrollerapp;
+package com.laidbackpdfapp;
 
 /**
  * Interface defining the basic scrolling behavior for any scroller implementation.
