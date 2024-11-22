@@ -1,4 +1,4 @@
-package com.laidbackpdfapp;
+package com.laidbackpdfapp.util;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;

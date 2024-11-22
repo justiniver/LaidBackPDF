@@ -1,5 +1,7 @@
 package com.laidbackpdfapp;
 
+import com.laidbackpdfapp.view.MainWindow;
+
 import javax.swing.SwingUtilities;
 
 /**
@@ -8,7 +10,7 @@ import javax.swing.SwingUtilities;
 public class Main {
   public static void main(String[] args) {
     SwingUtilities.invokeLater(() -> {
-      PDFAutoScroller scroller = new PDFAutoScroller();
+      MainWindow scroller = new MainWindow();
       scroller.setVisible(true);
     });
   }

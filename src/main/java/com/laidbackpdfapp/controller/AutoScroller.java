@@ -1,8 +1,8 @@
-package com.laidbackpdfapp;
+package com.laidbackpdfapp.controller;
 
-import javax.swing.JScrollPane;
-import javax.swing.Timer;
-import javax.swing.JScrollBar;
+import com.laidbackpdfapp.model.ScrollState;
+
+import javax.swing.*;
 
 /**
  * Handles automatic scrolling for a {@link JScrollPane}.

@@ -1,4 +1,6 @@
-package com.laidbackpdfapp;
+package com.laidbackpdfapp.controller;
+
+import com.laidbackpdfapp.model.ScrollState;
 
 /**
  * Interface defining the basic scrolling behavior for any scroller implementation.

@@ -1,4 +1,7 @@
-package com.laidbackpdfapp;
+package com.laidbackpdfapp.view;
+
+import com.laidbackpdfapp.controller.AutoScroller;
+import com.laidbackpdfapp.util.PDFLoader;
 
 import java.awt.*;
 import java.io.File;
@@ -9,9 +12,9 @@ import javax.swing.*;
  * Sets up and manages the GUI for the PDF Auto Scroller application.
  * This class initializes the main application window and handles PDF file selection,
  * configures the PDF viewing panel, and starts automatic scrolling through the PDF content.
- * Uses {@link PDFViewer} to display the PDF and {@link AutoScroller} to enable automatic scrolling.
+ * Uses {@link PDFView} to display the PDF and {@link AutoScroller} to enable automatic scrolling.
  */
-public class PDFAutoScroller extends JFrame {
+public class MainWindow extends JFrame {
 
   private AutoScroller autoScroller;
   private boolean isCurrentlyScrolling = false;
@@ -24,7 +27,7 @@ public class PDFAutoScroller extends JFrame {
    *
    * @throws IllegalStateException if no file is selected or if the selected file path is null
    */
-  public PDFAutoScroller() {
+  public MainWindow() {
     setTitle("PDF Auto Scroller");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new BorderLayout());
@@ -35,7 +38,7 @@ public class PDFAutoScroller extends JFrame {
       throw new IllegalStateException("File path cannot be null");
     }
 
-    PDFViewer pdfViewer = new PDFViewer();
+    PDFView pdfViewer = new PDFView();
     pdfViewer.loadPDF(filePath);
     add(pdfViewer.getScrollPane(), BorderLayout.CENTER);
 

@@ -1,4 +1,6 @@
-package com.laidbackpdfapp;
+package com.laidbackpdfapp.view;
+
+import com.laidbackpdfapp.util.PDFLoader;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,14 +17,14 @@ import javax.swing.JLabel;
 /**
  * Displays a PDF document by rendering each page as an image in a vertically scrollable view.
  */
-public class PDFViewer {
+public class PDFView {
   private final JScrollPane scrollPane;
   private final JPanel pdfPanel;
 
   /**
-   * Constructs a new {@link PDFViewer} with a vertically scrollable panel.
+   * Constructs a new {@link PDFView} with a vertically scrollable panel.
    */
-  public PDFViewer() {
+  public PDFView() {
     pdfPanel = new JPanel();
     pdfPanel.setLayout(new GridBagLayout());
 
