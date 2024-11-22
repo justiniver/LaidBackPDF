@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5deee33-e877-4ce7-80b5-3c69df1f0abe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/AutoScroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/controller/AutoScroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/PDFAutoScroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/view/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/PDFLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/util/PDFLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/PDFViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/view/PDFView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/ScrollState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/model/ScrollState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/Scroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/controller/Scroller.java" afterDir="false" />
-    </list>
+    <list default="true" id="e5deee33-e877-4ce7-80b5-3c69df1f0abe" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,6 +72,7 @@
     "Application.Main.executor": "Run",
     "Gradle.Build LaidBackPDF.executor": "Run",
     "Gradle.LaidBackPDF [:Main.main()].executor": "Run",
+    "Gradle.LaidBackPDF [test].executor": "Run",
     "Gradle.PdfScroller [:Main.main()].executor": "Run",
     "Gradle.PdfScroller [:PDFAutoScroller.main()].executor": "Run",
     "Gradle.PdfScroller [dependencies].executor": "Run",
@@ -217,7 +207,7 @@
       <workItem from="1730901492153" duration="1089000" />
       <workItem from="1730907758814" duration="498000" />
       <workItem from="1731620386382" duration="39000" />
-      <workItem from="1732249775205" duration="938000" />
+      <workItem from="1732249775205" duration="1304000" />
     </task>
     <servers />
   </component>
