@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5deee33-e877-4ce7-80b5-3c69df1f0abe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/view/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +214,7 @@
       <workItem from="1731620386382" duration="39000" />
       <workItem from="1732249775205" duration="1304000" />
       <workItem from="1732582840092" duration="280000" />
-      <workItem from="1732585364497" duration="1031000" />
+      <workItem from="1732585364497" duration="1344000" />
     </task>
     <servers />
   </component>

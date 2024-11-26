@@ -15,8 +15,9 @@ import javax.swing.*;
  * Uses {@link PDFView} to display the PDF and {@link AutoScroller} to enable automatic scrolling.
  */
 public class MainWindow extends JFrame {
-
-  private AutoScroller autoScroller;
+  private final PDFView pdfViewer;
+  private JTextField pageNumberField;
+  private final AutoScroller autoScroller;
   private boolean isCurrentlyScrolling = false;
 
   /**
@@ -38,20 +39,65 @@ public class MainWindow extends JFrame {
       throw new IllegalStateException("File path cannot be null");
     }
 
-    PDFView pdfViewer = new PDFView();
+    pdfViewer = new PDFView();
     pdfViewer.loadPDF(filePath);
     add(pdfViewer.getScrollPane(), BorderLayout.CENTER);
 
     autoScroller = new AutoScroller(pdfViewer.getScrollPane());
 
-    JPanel buttonPanel = getButtonPanel();
-    add(buttonPanel, BorderLayout.SOUTH);
+    JPanel controlPanel = new JPanel();
+    controlPanel.add(getButtonPanel());
+    controlPanel.add(getPageNavigationPanel());
+    add(controlPanel, BorderLayout.SOUTH);
 
     PDFLoader loader = new PDFLoader();
     int[] dimensions = loader.getFirstPageDimensions(filePath);
     int pdfWidth = dimensions[0];
     int pdfHeight = dimensions[1] / 2;
     setSize(pdfWidth, pdfHeight);
+  }
+
+  private JPanel getPageNavigationPanel() {
+    JPanel panel = new JPanel();
+    panel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+
+    pageNumberField = new JTextField(3);
+    JLabel totalPagesLabel = new JLabel(" / " + pdfViewer.getTotalPages());
+
+    JButton goButton = new JButton("Go");
+    goButton.addActionListener(e -> jumpToPage());
+
+    pageNumberField.addActionListener(e -> jumpToPage());
+
+    panel.add(new JLabel("Page: "));
+    panel.add(pageNumberField);
+    panel.add(totalPagesLabel);
+    panel.add(goButton);
+
+    return panel;
+  }
+
+  private void jumpToPage() {
+    try {
+      int pageNumber = Integer.parseInt(pageNumberField.getText().trim());
+      if (pageNumber > 0 && pageNumber <= pdfViewer.getTotalPages()) {
+        if (isCurrentlyScrolling) {
+          autoScroller.stopScrolling();
+          isCurrentlyScrolling = false;
+        }
+        pdfViewer.scrollToPage(pageNumber);
+      } else {
+        JOptionPane.showMessageDialog(this,
+                "Please enter a page number between 1 and " + pdfViewer.getTotalPages(),
+                "Invalid Page Number",
+                JOptionPane.ERROR_MESSAGE);
+      }
+    } catch (NumberFormatException ex) {
+      JOptionPane.showMessageDialog(this,
+              "Please enter a valid page number",
+              "Invalid Input",
+              JOptionPane.ERROR_MESSAGE);
+    }
   }
 
   private JPanel getButtonPanel() {
