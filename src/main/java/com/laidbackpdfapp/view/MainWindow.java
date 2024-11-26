@@ -88,7 +88,6 @@ public class MainWindow extends JFrame {
     return buttonPanel;
   }
 
-
   /**
    * Opens a file chooser dialog to allow the user to select a PDF file.
    * Displays a file chooser and returns the path to the selected PDF file. If no file

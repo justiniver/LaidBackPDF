@@ -2,22 +2,17 @@ package com.laidbackpdfapp.view;
 
 import com.laidbackpdfapp.util.PDFLoader;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Component;
+import java.awt.*;
 import java.util.List;
 
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 
 /**
  * Displays a PDF document by rendering each page as an image in a vertically scrollable view.
  */
 public class PDFView {
+  private List<ImageIcon> pdfImages;
   private final JScrollPane scrollPane;
   private final JPanel pdfPanel;
 
@@ -54,7 +49,7 @@ public class PDFView {
    */
   public void loadPDF(String filePath) {
     PDFLoader loader = new PDFLoader();
-    List<ImageIcon> pdfImages = loader.loadPDF(filePath);
+    this.pdfImages = loader.loadPDF(filePath);
 
     if (pdfImages.isEmpty()) {
       throw new IllegalStateException("Failed to load PDF.");
@@ -62,12 +57,38 @@ public class PDFView {
 
     JPanel pagesPanel = (JPanel) ((JPanel) scrollPane.getViewport().getView()).getComponent(0);
     for (ImageIcon image : pdfImages) {
-        JLabel pageLabel = new JLabel(image);
-        pageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        pagesPanel.add(pageLabel);
+      JLabel pageLabel = new JLabel(image);
+      pageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+      pagesPanel.add(pageLabel);
     }
 
     pdfPanel.revalidate();
     pdfPanel.repaint();
   }
+
+  /**
+   *
+   * @param pageNumber
+   */
+  public void scrollToPage(int pageNumber) {
+    if (pageNumber < 1 || pageNumber > pdfImages.size()) {
+      throw new IllegalArgumentException("Invalid page number");
+    }
+
+    JPanel pagesPanel = (JPanel) ((JPanel) scrollPane.getViewport().getView()).getComponent(0);
+    Component[] pages = pagesPanel.getComponents();
+
+    Rectangle bounds = pages[pageNumber - 1].getBounds();
+    pagesPanel.scrollRectToVisible(bounds);
+    scrollPane.getVerticalScrollBar().setValue(bounds.y);
+  }
+
+  /**
+   *
+   * @return
+   */
+  public int getTotalPages() {
+    return pdfImages.size();
+  }
+
 }
