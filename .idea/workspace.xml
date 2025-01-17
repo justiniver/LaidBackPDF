@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5deee33-e877-4ce7-80b5-3c69df1f0abe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laidbackpdfapp/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +214,9 @@
       <workItem from="1731620386382" duration="39000" />
       <workItem from="1732249775205" duration="1304000" />
       <workItem from="1732582840092" duration="280000" />
-      <workItem from="1732585364497" duration="1344000" />
+      <workItem from="1732585364497" duration="1477000" />
+      <workItem from="1733106686333" duration="5000" />
+      <workItem from="1736958493500" duration="927000" />
     </task>
     <servers />
   </component>

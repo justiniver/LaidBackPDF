@@ -67,8 +67,8 @@ public class PDFView {
   }
 
   /**
-   *
-   * @param pageNumber
+   * Scrolls to a page given a page number.
+   * @param pageNumber the page number to scroll to
    */
   public void scrollToPage(int pageNumber) {
     if (pageNumber < 1 || pageNumber > pdfImages.size()) {
@@ -84,8 +84,8 @@ public class PDFView {
   }
 
   /**
-   *
-   * @return
+   * Returns the total pages of the pdf.
+   * @return the total pages of pdf
    */
   public int getTotalPages() {
     return pdfImages.size();
