@@ -4,6 +4,8 @@
 
 LaidBackPDF is a PDF-focused application designed to provide a relaxed, user-friendly reading experience. Currently, it allows users to automatically scroll through PDFs with adjustable scroll speed, making it ideal for hands-free reading or study sessions. The project is being actively developed, with future features planned to enhance its utility for educational and interactive content.
 
+![LaidBackPDF Example](src/main/resources/scrollappex.png)
+
 ## Features
 
 - **Auto-Scrolling**: Automatically scroll through the PDF content at a customizable speed.
